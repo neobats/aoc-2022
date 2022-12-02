@@ -1,0 +1,17 @@
+* {
+  --bg: #fff;
+  --on-bg: #000;
+  --primary: royalblue;
+  --secondary: silver;
+
+  /* font */
+  --mono-range: 0;
+  --mono: "MONO" var(--mono-range);
+  --casl-range: 0;
+  --casl: "CASL" var(--casl-range);
+  --wght-range: 400;
+  --wght: "wght" var(--wght-range);
+  --slnt-range: 0;
+  --slnt: "slnt" var(--slnt-range); 
+  --font-vars: var(--mono), var(--casl), var(--wght), var(--slnt);
+}

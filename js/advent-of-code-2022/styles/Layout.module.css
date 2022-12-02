@@ -1,0 +1,76 @@
+.header {
+  display: block;
+  padding: 1rem 2rem;
+}
+
+.header h1 {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.header h1::after,
+.header h1::before {
+  display: inline-block;
+  content: '';
+  width: 100%;
+  margin-top: 0.08em;
+  height: 0.05em;
+  background-color: var(--primary);
+}
+
+.header h1::before {
+  order: 3;
+  height: 0.2em;
+  margin-top: 0.04em;
+  margin-left: -0.08em;
+  transform: skewX(-30deg);
+  background-color: var(--secondary);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  padding-top: 1rem;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav a {
+  transition: all 0.15s ease;
+  color: var(--primary);
+  --slnt-range: -14;
+  --casl-range: 1;
+  --wght-range: 700;
+  font-variation-settings: var(--font-vars);
+  font-size: 1.5rem;
+}
+
+.nav a:hover {
+  color: var(--secondary);
+  --slnt-range: 0;
+  font-variation-settings: var(--font-vars);
+}
+
+.main {
+  padding: 0 1rem;
+
+}
+.footer {
+  display: flex;
+  place-items: center;
+  place-content: center;
+  padding: 2rem;
+}
