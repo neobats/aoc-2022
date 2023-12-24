@@ -16,6 +16,7 @@ const splitRucksack = (rucksack: string): [string[], string[]] => [
 const union = <T,>(arrA: T[], arrB: T[]) => {
   return [...new Set(arrA.filter(a => arrB.includes(a)))]
 }
+
 const getCharPriority = (char: string) => {
   const x = char.charCodeAt(0)
   return x > 96 ? x - 96 // lower a is 97, and a represents 1 in our case
@@ -39,18 +40,29 @@ const findGroupBadge = (rucksacks: string[]) => {
 export default function Three({ data }: Props) {
   const [showCommonData, setShowCommonData] = useState(false)
 
-  const commonItemType = useMemo(() => {
-    const compartments: [string[], string[]][] = data.map(splitRucksack)
-    return compartments.map(c => ({ compartments: c.map(ec => ec.join('')), common: union(...c)}))
-  }, [data])
+  const commonItemType = useMemo(() =>
+    data
+      .map(splitRucksack)
+      .map(c => ({
+        compartments: c.map(ec => ec.join('')),
+        common: union(...c)})
+      ),
+    [data]
+  )
 
-  const totalPriority = useMemo(() => commonItemType.flatMap(({ common }) => common).reduce(sumCharPriority, 0), [commonItemType])
+  const totalPriority = useMemo(() => 
+    commonItemType
+      .flatMap(({ common }) => common)
+      .reduce(sumCharPriority, 0), 
+    [commonItemType]
+  )
 
-  const groupBadge = useMemo(() => {
-    const result = findGroupBadge(data)
-    const allBadgeItemTypes = result.flat()
-    return allBadgeItemTypes.reduce(sumCharPriority, 0)
-  }, [data])
+  const groupBadge = useMemo(() =>
+    findGroupBadge(data)
+      .flat()
+      .reduce(sumCharPriority, 0), 
+    [data]
+  )
     
 
   const renderCommonItems = () => commonItemType.map(({ compartments, common}) => (
