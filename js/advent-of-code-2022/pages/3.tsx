@@ -36,7 +36,6 @@ const findGroupBadge = (rucksacks: string[]) => {
   )
 }
 
-
 export default function Three({ data }: Props) {
   const [showCommonData, setShowCommonData] = useState(false)
 
